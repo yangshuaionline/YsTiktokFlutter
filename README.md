@@ -1,16 +1,18 @@
-# ys_tiktok_flutter
+# [项目地址](https://github.com/yangshuaionline/YsTiktokFlutter)
+>Flutter版本Tiktok
 
-A new Flutter project.
+[Android版本YsTiktok(未开始编写)](https://github.com/yangshuaionline/YsTiktok)
 
-## Getting Started
+- assets:资源文件
+  - mipmap：图片
+  
+- lib：dart文件
+    - friend：朋友模块
+    - home：首页模块
+    - main：main模块  
+    - message：消息模块
+    - mine：我模块
+    - release：发布模块
+    - main.dart:程序入口
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
