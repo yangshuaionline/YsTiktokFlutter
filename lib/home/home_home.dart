@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../video/chewie_video.dart';
 ///首页
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
@@ -20,19 +22,13 @@ class _HomeWidgetState extends State<HomeWidget> with SingleTickerProviderStateM
   }
 
   @override
-  Column build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      // children: _pageList,
-      children: <Widget>[
-        Text(
-          title,
-        ),
-        Text(
-          '$_counter',
-          style: Theme.of(context).textTheme.headline4,
-        ),
-      ],
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home:  ChewieVideoPage(),
     );
   }
 }

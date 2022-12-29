@@ -13,6 +13,7 @@
     - message：消息模块
     - mine：我模块
     - release：发布模块
+    - video：视频播放模块
     - main.dart:程序入口
 
 
