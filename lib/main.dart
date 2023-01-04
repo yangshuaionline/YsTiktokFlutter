@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ys_tiktok_flutter/friend/friend_home.dart';
 import 'package:ys_tiktok_flutter/home/home_home.dart';
 import 'package:ys_tiktok_flutter/message/message_home.dart';
@@ -15,15 +16,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        splashColor: Colors.transparent, // 点击时的高亮效果设置为透明
-        highlightColor: Colors.transparent, // 长按时的扩散效果设置为透明
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+            return MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                splashColor: Colors.transparent, // 点击时的高亮效果设置为透明
+                highlightColor: Colors.transparent, // 长按时的扩散效果设置为透明
+                primarySwatch: Colors.blue,
+              ),
+              home: const MyHomePage(title: 'Flutter Demo Home Page'),
+            );
+        });
   }
 }
 

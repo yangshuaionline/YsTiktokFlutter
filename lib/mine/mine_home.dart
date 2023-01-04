@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 ///我
 class MineHomeWidget extends StatefulWidget {
   const MineHomeWidget({super.key});
@@ -30,34 +31,34 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
         SliverAppBar(
           title: Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: const <Widget>[
-              Icon(Icons.sports_handball_sharp),
+            children: <Widget>[
+              const Icon(Icons.sports_handball_sharp),
               Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Icon(Icons.search),
+                padding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(10), 0, ScreenUtil().setWidth(10), 0),
+                child: const Icon(Icons.search),
               ),
-              Icon(Icons.menu)
+              const Icon(Icons.menu)
             ],
           ),
           centerTitle: true,
           // leading: const Icon(Icons.backspace),
-          expandedHeight: 200,
-          collapsedHeight: 200,
+          expandedHeight: ScreenUtil().setWidth(200),
+          collapsedHeight: ScreenUtil().setWidth(200),
           pinned: false,//AppBar是否固定在顶部
           floating: false,
           backgroundColor: Colors.cyanAccent,//SliverAppBar背景色
           flexibleSpace: FlexibleSpaceBar(
-            titlePadding: const EdgeInsets.fromLTRB(15, 100, 100, 20),
+            titlePadding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(15), ScreenUtil().setWidth(100), ScreenUtil().setWidth(100), ScreenUtil().setWidth(20)),
             centerTitle: false,
             title: Row(
               children:  <Widget>[
                 Center(
                   child: Container(
-                    width: 80,
-                    height: 80,
+                    width: ScreenUtil().setWidth(80),
+                    height: ScreenUtil().setWidth(80),
                     decoration: BoxDecoration(
                       color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(ScreenUtil().setWidth(100)),
                       image: const DecorationImage(
                         image: AssetImage("assets/mipmap/icon_headpic.webp"),
                       ),
@@ -66,29 +67,29 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                 ),
                 Expanded(//头像右边文字
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(10), 0, 0, 0),
                     child:  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Row(
                           children: <Widget>[
-                            const Text("游戏熊猫",
+                            Text("游戏熊猫",
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: ScreenUtil().setSp(20),
                                 fontWeight: FontWeight.w300,
                               ),),
                             SizedBox(
-                              height: 18,
-                              width: 18,
+                              height: ScreenUtil().setSp(18),
+                              width: ScreenUtil().setSp(18),
                               child: IconButton(
-                                padding: const EdgeInsets.fromLTRB(5,0,0,0),
-                                icon: const Icon(
+                                padding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(5),0,0,0),
+                                icon: Icon(
                                   Icons.arrow_drop_down_circle_outlined,
                                   color: Colors.white,
-                                  size: 18,
+                                  size: ScreenUtil().setWidth(18),
                                 ),
                                 onPressed: () {  },
                               ),
@@ -97,19 +98,19 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                         ),
                         Row(
                           children:  <Widget>[
-                             const Text("抖音号：gamepanda",
+                            Text("抖音号：gamepanda",
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 13,
+                                fontSize: ScreenUtil().setSp(13),
                                 fontWeight: FontWeight.w300,
                               ),),
                              SizedBox(
-                               height: 12,
-                               width: 12,
+                               height: ScreenUtil().setWidth(12),
+                               width: ScreenUtil().setWidth(12),
                                child: IconButton(
-                                 padding: const EdgeInsets.fromLTRB(5,0,0,0),
-                                 icon: const Icon(Icons.qr_code,color: Colors.white,size: 12,),
+                                 padding: EdgeInsets.fromLTRB(ScreenUtil().setWidth(5),0,0,0),
+                                 icon: Icon(Icons.qr_code,color: Colors.white,size: ScreenUtil().setSp(12),),
                                  onPressed: () {  },
                                ),
                             ),
@@ -131,53 +132,53 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
               delegate: SliverChildListDelegate(<Widget>[
                 //点赞 关注 粉丝
                 Container(
-                  padding: const EdgeInsets.all(15),
+                  padding: EdgeInsets.all(ScreenUtil().setWidth(15)),
                   color: Colors.black,
                   child: Row(
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text(
                         "7.0万",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 15
+                          fontSize: ScreenUtil().setSp(15)
                         ),),
                       Padding(
-                        padding: EdgeInsets.only(left:5,right: 15),
+                        padding: EdgeInsets.only(left:ScreenUtil().setWidth(5),right: ScreenUtil().setWidth(15)),
                         child: Text(
                           "获赞",
                           style: TextStyle(
                               color: Colors.grey,
-                              fontSize: 15
+                              fontSize: ScreenUtil().setSp(15)
                           ),),
                       ),
                       Text(
                         "25",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 15
+                            fontSize: ScreenUtil().setSp(15)
                         ),),
                       Padding(
-                        padding: EdgeInsets.only(left:5,right: 15),
+                        padding: EdgeInsets.only(left:ScreenUtil().setWidth(5) ,right: ScreenUtil().setWidth(15) ),
                         child: Text(
                           "关注",
                           style: TextStyle(
                               color: Colors.grey,
-                              fontSize: 15
+                              fontSize: ScreenUtil().setWidth(15)
                           ),),
                       ),
                       Text(
                         "1.5万",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 15
+                            fontSize: ScreenUtil().setSp(15)
                         ),),
                       Padding(
-                        padding: EdgeInsets.only(left:5,right: 15),
+                        padding: EdgeInsets.only(left:ScreenUtil().setWidth(5) ,right: ScreenUtil().setWidth(15)),
                         child: Text(
                           "粉丝",
                           style: TextStyle(
                               color: Colors.grey,
-                              fontSize: 15
+                              fontSize: ScreenUtil().setSp(15)
                           ),),
                       ),
                     ],
@@ -185,50 +186,50 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                 ),
                 //个人签名
                 Container(
-                  padding: const EdgeInsets.only(left:15,right: 15,top: 5,bottom: 5),
+                  padding: EdgeInsets.only(left:ScreenUtil().setWidth(15) ,right: ScreenUtil().setWidth(15),top: ScreenUtil().setWidth(5),bottom: ScreenUtil().setWidth(5)),
                   color: Colors.black,
-                  child: const Text(
+                  child: Text(
                       "该用户关注了你\n推荐、分享好玩的小游戏！",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15
+                      fontSize: ScreenUtil().setSp(15)
                     ),
                   ),
                 ),
                 //个人标签
                 Container(
-                  padding: const EdgeInsets.only(left:15,right: 15,top: 0,bottom: 5),
+                  padding: EdgeInsets.only(left:ScreenUtil().setWidth(10),right: ScreenUtil().setWidth(10),top: ScreenUtil().setWidth(0),bottom: ScreenUtil().setWidth(5)),
                   color: Colors.black,
                   child: Row(
                     children: <Widget>[
                       Container(
-                        margin: const EdgeInsets.only(right: 5),
-                        child: const Chip(
+                        margin: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
+                        child: Chip(
                           avatar: CircleAvatar(
                             backgroundColor: Colors.grey,
-                            child: Icon(Icons.sports_handball_sharp,color: Colors.white,size: 12,),
+                            child: Icon(Icons.sports_handball_sharp,color: Colors.white,size: ScreenUtil().setWidth(12),),
                           ),
-                          label: Text('北京-昌平',style: TextStyle(fontSize: 12),),
+                          label: Text('北京-昌平',style: TextStyle(fontSize: ScreenUtil().setSp(11)),),
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(right: 5),
-                        child: const Chip(
+                        margin: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
+                        child: Chip(
                           avatar: CircleAvatar(
                             backgroundColor: Colors.grey,
-                            child: Icon(Icons.sports_handball_sharp,color: Colors.white,size: 12,),
+                            child: Icon(Icons.sports_handball_sharp,color: Colors.white,size: ScreenUtil().setWidth(12),),
                           ),
-                          label: Text('北京理工大学',style: TextStyle(fontSize: 12),),
+                          label: Text('北京理工大学',style: TextStyle(fontSize: ScreenUtil().setSp(11)),),
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(right: 5),
-                        child: const Chip(
+                        margin: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
+                        child: Chip(
                           avatar: CircleAvatar(
                             backgroundColor: Colors.grey,
-                            child: Icon(Icons.sports_handball_sharp,color: Colors.white,size: 12,),
+                            child: Icon(Icons.sports_handball_sharp,color: Colors.white,size: ScreenUtil().setSp(12),),
                           ),
-                          label: Text('添加性别等标签',style: TextStyle(fontSize: 12),),
+                          label: Text('添加性别等标签',style: TextStyle(fontSize: ScreenUtil().setWidth(11)),),
                         ),
                       ),
                     ],
@@ -236,34 +237,34 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                 ),
                 //粉丝群  抖音商城
                 Container(
-                  padding: const EdgeInsets.only(left:15,right: 15,top: 10,bottom: 10),
+                  padding: EdgeInsets.only(left:ScreenUtil().setWidth(15),right: ScreenUtil().setWidth(15),top: ScreenUtil().setWidth(10),bottom: ScreenUtil().setWidth(10)),
                   color: Colors.black,
                   child: Row(
                     children: <Widget>[
                       Row(
                         children: <Widget>[
                           Container(
-                            width: 50,
-                            height: 50,
+                            width: ScreenUtil().setWidth(50),
+                            height: ScreenUtil().setWidth(50),
                             decoration: BoxDecoration(
                               color: Colors.yellow,
-                              borderRadius: BorderRadius.circular(3),
+                              borderRadius: BorderRadius.circular(ScreenUtil().setWidth(3)),
                               image: const DecorationImage(
                                 image: AssetImage("assets/mipmap/icon_headpic.webp"),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 10,right: 50),
+                            padding: EdgeInsets.only(left: ScreenUtil().setWidth(10),right: ScreenUtil().setWidth(45)),
                             child: Column(
-                              children: const <Widget>[
+                              children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
+                                  padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(10)),
                                   child: Text(
                                     "粉丝群",
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 15
+                                        fontSize: ScreenUtil().setSp(15)
                                     ),
                                   ),
                                 ),
@@ -271,7 +272,7 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                                   "1个群聊",
                                   style: TextStyle(
                                       color: Colors.grey,
-                                      fontSize: 10
+                                      fontSize: ScreenUtil().setSp(10)
                                   ),
                                 ),
                               ],
@@ -283,28 +284,28 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                       Row(
                         children: <Widget>[
                           Container(
-                            width: 50,
-                            height: 50,
+                            width: ScreenUtil().setWidth(50),
+                            height: ScreenUtil().setWidth(50),
                             decoration: BoxDecoration(
                               color: Colors.yellow,
-                              borderRadius: BorderRadius.circular(3),
+                              borderRadius: BorderRadius.circular(ScreenUtil().setWidth(3)),
                               image: const DecorationImage(
                                 image: AssetImage("assets/mipmap/icon_headpic.webp"),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 10,right: 50),
+                            padding: EdgeInsets.only(left: ScreenUtil().setWidth(10),right: ScreenUtil().setWidth(30)),
                             child: Column(
-                              children: const <Widget>[
+                              children: <Widget>[
                                 Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
+                                  padding: EdgeInsets.only(bottom: ScreenUtil().setWidth(10)),
                                   child: Text(
                                     "抖音商城",
                                     textAlign:TextAlign.left,
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 15,
+                                        fontSize: ScreenUtil().setSp(15),
                                     ),
                                   ),
                                 ),
@@ -312,7 +313,7 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                                   "美好生活触手可得",
                                   style: TextStyle(
                                       color: Colors.grey,
-                                      fontSize: 10
+                                      fontSize: ScreenUtil().setSp(10)
                                   ),
                                 ),
                               ],
@@ -326,28 +327,28 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                 ),
                 //编辑资料  添加朋友
                 Container(
-                  padding: const EdgeInsets.only(left:15,right: 15,top: 10,bottom: 5),
+                  padding: EdgeInsets.only(left:ScreenUtil().setWidth(15),right: ScreenUtil().setWidth(15),top: ScreenUtil().setWidth(10),bottom: ScreenUtil().setWidth(5)),
                   color: Colors.black,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Container(
-                        margin: const EdgeInsets.only(right: 5),
+                        margin: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
                         child: SizedBox(
                           child: CupertinoButton(
                             color: Colors.grey,
                             onPressed: () {  },
-                            child: const Text('编辑资料',style: TextStyle(fontSize: 14,color: Colors.white),),
+                            child: Text('编辑资料',style: TextStyle(fontSize: ScreenUtil().setSp(10),color: Colors.white),),
                           ),
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 5),
+                        margin: EdgeInsets.only(left: ScreenUtil().setWidth(5)),
                         child: SizedBox(
                           child: CupertinoButton(
                             color: Colors.grey,
                             onPressed: () {  },
-                            child: const Text('添加朋友',style: TextStyle(fontSize: 14,color: Colors.white),),
+                            child: Text('添加朋友',style: TextStyle(fontSize: ScreenUtil().setSp(10),color: Colors.white),),
                           ),
                         ),
                       ),
@@ -356,7 +357,7 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                 ),
                 //tab
                 Container(
-                  height: 500,
+                  height: ScreenUtil().setWidth(500),
                   color: Colors.deepPurpleAccent,
                   child: DefaultTabController(
                     initialIndex: 1,
@@ -391,15 +392,15 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                             Center(
                               child: GridView.count(
                                 primary: false,
-                                padding: const EdgeInsets.all(20),
-                                crossAxisSpacing: 10,
-                                mainAxisSpacing: 10,
+                                padding: EdgeInsets.all(ScreenUtil().setWidth(20)),
+                                crossAxisSpacing: ScreenUtil().setWidth(10),
+                                mainAxisSpacing: ScreenUtil().setWidth(10),
                                 crossAxisCount: 3,
                                 children: <Widget>[
                                   Container(
                                     padding: const EdgeInsets.all(8),
-                                    width: 200,
-                                    height: 60,
+                                    width: ScreenUtil().setWidth(200),
+                                    height: ScreenUtil().setWidth(60),
                                     decoration: const BoxDecoration(
                                       color: Colors.white,
                                       image: DecorationImage(
@@ -408,19 +409,19 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                                       ),
                                     ),
                                     alignment: Alignment.bottomCenter,
-                                    child: const Text(
+                                    child: Text(
                                       '2000',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontSize: 15,
+                                        fontSize: ScreenUtil().setSp(15),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.all(8),
-                                    width: 200,
-                                    height: 60,
+                                    padding: EdgeInsets.all(ScreenUtil().setWidth(8)),
+                                    width: ScreenUtil().setWidth(200),
+                                    height: ScreenUtil().setWidth(60),
                                     decoration: const BoxDecoration(
                                       color: Colors.white,
                                       image: DecorationImage(
@@ -429,19 +430,19 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                                       ),
                                     ),
                                     alignment: Alignment.bottomCenter,
-                                    child: const Text(
+                                    child: Text(
                                       '2000',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontSize: 15,
+                                        fontSize: ScreenUtil().setSp(15),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.all(8),
-                                    width: 200,
-                                    height: 60,
+                                    padding: EdgeInsets.all(ScreenUtil().setWidth(8)),
+                                    width: ScreenUtil().setWidth(200),
+                                    height: ScreenUtil().setWidth(60),
                                     decoration: const BoxDecoration(
                                       color: Colors.white,
                                       image: DecorationImage(
@@ -450,19 +451,19 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                                       ),
                                     ),
                                     alignment: Alignment.bottomCenter,
-                                    child: const Text(
+                                    child: Text(
                                       '2000',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontSize: 15,
+                                        fontSize: ScreenUtil().setSp(15),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.all(8),
-                                    width: 200,
-                                    height: 60,
+                                    padding: EdgeInsets.all(ScreenUtil().setWidth(8)),
+                                    width: ScreenUtil().setWidth(200),
+                                    height: ScreenUtil().setWidth(60),
                                     decoration: const BoxDecoration(
                                       color: Colors.white,
                                       image: DecorationImage(
@@ -471,19 +472,19 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                                       ),
                                     ),
                                     alignment: Alignment.bottomCenter,
-                                    child: const Text(
+                                    child: Text(
                                       '2000',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontSize: 15,
+                                        fontSize: ScreenUtil().setSp(15),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.all(8),
-                                    width: 200,
-                                    height: 60,
+                                    padding: EdgeInsets.all(ScreenUtil().setWidth(8)),
+                                    width: ScreenUtil().setWidth(200),
+                                    height: ScreenUtil().setWidth(60),
                                     decoration: const BoxDecoration(
                                       color: Colors.white,
                                       image: DecorationImage(
@@ -492,19 +493,19 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                                       ),
                                     ),
                                     alignment: Alignment.bottomCenter,
-                                    child: const Text(
+                                    child: Text(
                                       '2000',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontSize: 15,
+                                        fontSize: ScreenUtil().setSp(15),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.all(8),
-                                    width: 200,
-                                    height: 60,
+                                    padding: EdgeInsets.all(ScreenUtil().setWidth(8)),
+                                    width: ScreenUtil().setWidth(200),
+                                    height: ScreenUtil().setWidth(60),
                                     decoration: const BoxDecoration(
                                       color: Colors.white,
                                       image: DecorationImage(
@@ -513,58 +514,15 @@ class _MineHomeWidgetState extends State<MineHomeWidget> with SingleTickerProvid
                                       ),
                                     ),
                                     alignment: Alignment.bottomCenter,
-                                    child: const Text(
+                                    child: Text(
                                       '2000',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontSize: 15,
+                                        fontSize: ScreenUtil().setSp(15),
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    padding: const EdgeInsets.all(8),
-                                    width: 200,
-                                    height: 60,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      image: DecorationImage(
-                                          image: AssetImage("assets/mipmap/icon_headpic.webp"),
-                                          fit: BoxFit.fill
-                                      ),
-                                    ),
-                                    alignment: Alignment.bottomCenter,
-                                    child: const Text(
-                                      '2000',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.all(8),
-                                    width: 200,
-                                    height: 60,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      image: DecorationImage(
-                                          image: AssetImage("assets/mipmap/icon_headpic.webp"),
-                                          fit: BoxFit.fill
-                                      ),
-                                    ),
-                                    alignment: Alignment.bottomCenter,
-                                    child: const Text(
-                                      '2000',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                  ),
-
                                 ],
                               ),
                             ),
