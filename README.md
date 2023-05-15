@@ -14,3 +14,11 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+
+### 命名规则：
+
+1. 文件名：模块+功能（tikTokHeader）
+2. 页面命名：模块+功能+Page（登录页tikTokPage）
+
