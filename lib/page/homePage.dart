@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:safemap/safemap.dart';
-import 'package:tapped/tapped.dart';
 import 'package:video_player/video_player.dart';
 import 'package:ys_tiktok_flutter/page/searchPage.dart';
 import 'package:ys_tiktok_flutter/page/tikTokPage.dart';
 import 'package:ys_tiktok_flutter/page/userPage.dart';
-
 import '../controller/tikTokVideoListController.dart';
 import '../entity/video.dart';
+import '../router/Router.dart';
 import '../style/physics.dart';
 import '../widget/homeTabBar.dart';
 import '../widget/tikTokCommentBottomSheet.dart';
-import '../widget/tikTokHeader.dart';
 import '../widget/tikTokVideo.dart';
 import '../widget/tikTokVideoButtonColumn.dart';
 import 'cameraPage.dart';
@@ -33,9 +31,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   TikTokScaffoldController tkController = TikTokScaffoldController();
 
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
 
-  TikTokVideoListController _videoListController = TikTokVideoListController();
+  final TikTokVideoListController _videoListController = TikTokVideoListController();
 
   /// 记录点赞
   Map<int, bool> favoriteMap = {};
@@ -93,17 +91,18 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         }
       },
     );
-
     super.initState();
+    Future.delayed(Duration.zero, () {
+      Navigator.pushNamed(context, routerWelcome);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     Widget? currentPage;
-
     switch (tabBarType) {
       case HomePageTag.home:
-        currentPage = FirstPage();
+        currentPage = const FirstPage();
         break;
       case HomePageTag.find:
         currentPage = FollowPage();
@@ -175,7 +174,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     //   ),
     //   onTap: (){ Navigator.of(context).pop();},
     // );
-
     // 组合
     return TikTokScaffold(
       controller: tkController,

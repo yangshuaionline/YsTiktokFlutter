@@ -2,7 +2,7 @@
 ///全局常量池
 ///
 //项目名称
-const String appName = "鲸致生活";
+const String appName = "YsTiktok";
 //屏幕宽度
 const double screenWidth = 360;
 //屏幕高度

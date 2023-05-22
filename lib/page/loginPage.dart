@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../const.dart';
-import '../../router/Router.dart';
-import '../../utils/phone.dart';
-import '../../widget/Bottons.dart';
-import '../../widget/CountdownTimer.dart';
-import '../../widget/RegExp.dart';
-import '../../widget/Toasts.dart';
+import '../const.dart';
+import '../router/Router.dart';
+import '../utils/phone.dart';
+import '../widget/Bottons.dart';
+import '../widget/CountdownTimer.dart';
+import '../widget/RegExp.dart';
+import '../widget/Toasts.dart';
 //****/
 
 class LoginPage extends StatefulWidget {
@@ -137,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.pinkAccent,
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView   (
         physics:const BouncingScrollPhysics(),

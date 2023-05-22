@@ -25,14 +25,20 @@ class MyButton extends StatefulWidget {
   }
 }
 
-class MyButtonState extends State<MyButton> {
+class MyButtonState extends State<MyButton> with AutomaticKeepAliveClientMixin{
   String _text = "";
   bool _canClick = true;//是否可以点击
   Color _btBgColor = Colors.blue;
+
   @override
   void initState() {
     super.initState();
     if(_text.isEmpty) _text = widget.text;
+  }
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context.dependOnInheritedWidgetOfExactType<IconTheme>();
   }
   setText(String msg){
     setState(() {
@@ -55,6 +61,28 @@ class MyButtonState extends State<MyButton> {
         return;
       }
     });
+  }
+
+  @override
+  void didUpdateWidget(covariant MyButton oldWidget) {
+    // 如果二次加载，刷新状态
+    print("=====================================>");
+    if(oldWidget != widget){
+      _text = "";
+      _canClick = true;//是否可以点击
+      _btBgColor = Colors.blue;
+      if(_text.isEmpty) _text = widget.text;
+    }
+    super.didUpdateWidget(oldWidget);
+
+  }
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
+  }
+  @override
+  void dispose() {
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
@@ -107,11 +135,9 @@ class MyButtonState extends State<MyButton> {
           fontSize: widget.fontSize,
         ),
       ),
-      // onHighlightChanged: (value) {
-      //   setState(() {
-      //     _isPressed = value;
-      //   });
-      // },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

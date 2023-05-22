@@ -4,7 +4,7 @@ import '../main.dart';
 import '../page/ErrorPage.dart';
 import '../page/PageTiktok.dart';
 import '../page/agreement/PageAgreement.dart';
-import '../page/login/PageLogin.dart';
+import '../page/loginPage.dart';
 import '../page/welcome/PageWelcome.dart';
 import 'Router.dart';
 //路由管理器
