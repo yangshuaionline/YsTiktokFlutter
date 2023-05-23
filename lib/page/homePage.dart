@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:safemap/safemap.dart';
 import 'package:video_player/video_player.dart';
 import 'package:ys_tiktok_flutter/page/searchPage.dart';
@@ -6,6 +7,7 @@ import 'package:ys_tiktok_flutter/page/tikTokPage.dart';
 import 'package:ys_tiktok_flutter/page/userPage.dart';
 import '../controller/tikTokVideoListController.dart';
 import '../entity/video.dart';
+import '../persistence/userStorage.dart';
 import '../router/Router.dart';
 import '../style/physics.dart';
 import '../widget/homeTabBar.dart';
@@ -93,7 +95,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     );
     super.initState();
     Future.delayed(Duration.zero, () {
-      Navigator.pushNamed(context, routerWelcome);
+      UserStorage.getToken().then((value){
+        if(value.isEmpty){
+          Navigator.pushNamed(context, routerWelcome);
+        }else{
+          Logger().i("已经登录，token为===>$value");
+        }
+      });
+
     });
   }
 
@@ -102,10 +111,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     Widget? currentPage;
     switch (tabBarType) {
       case HomePageTag.home:
-        currentPage = const FirstPage();
+        // currentPage = const FirstPage();
         break;
       case HomePageTag.find:
-        currentPage = FollowPage();
+        currentPage = const FirstPage();
         break;
       case HomePageTag.goods:
         currentPage = FollowPage();

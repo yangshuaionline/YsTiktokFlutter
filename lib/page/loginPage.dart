@@ -204,6 +204,7 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
             setState(() {
               String code = value;
               _controller.text = code;
+              FlutterClipboard.copy("").then(( value ) => Logger().i('cleared'));
             });
           });
         }
