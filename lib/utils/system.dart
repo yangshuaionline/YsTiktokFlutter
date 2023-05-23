@@ -57,15 +57,34 @@ Widget setRouter(Widget widget){
     initialRoute: routerHome,
     onGenerateRoute: RouteGenerator.generateRoute,
     theme: ThemeData(
-      brightness: Brightness.dark,
+      // colorScheme: const  ColorScheme(
+      //     primary: Colors.redAccent,//上方标题栏颜色
+      //     primaryVariant: Colors.white,
+      //     secondary: Colors.green,
+      //     background: Colors.white,
+      //     error: Colors.red,
+      //     brightness:Brightness.light,
+      //     onBackground: Colors.pink,
+      //     secondaryVariant: Colors.white,
+      //     onError: Colors.yellow,
+      //     onPrimary: Colors.white,//字体颜色
+      //     onSecondary: Colors.redAccent,
+      //     onSurface: Colors.redAccent,
+      //     surface: Colors.redAccent,
+      //   // all fields should have a value
+      // ),
+      // brightness: Brightness.light,
       hintColor: Colors.white,
       // accentColor: Colors.white,
       primaryColor: ColorPlate.orange,
-      primaryColorBrightness: Brightness.dark,
+      primaryColorBrightness: Brightness.light,
       scaffoldBackgroundColor: ColorPlate.back1,
       dialogBackgroundColor: ColorPlate.back2,
       // accentColorBrightness: Brightness.light,
       textTheme: const TextTheme(bodyText1: StandardTextStyle.normal,),
+      // inputDecorationTheme: const InputDecorationTheme(
+      //   labelStyle: TextStyle(color: Colors.grey)
+      // ),
     ),
     home: widget,
   );

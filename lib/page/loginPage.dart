@@ -1,7 +1,16 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:logger/logger.dart';
+import 'package:ys_tiktok_flutter/bean/loginBean.dart';
+import 'package:ys_tiktok_flutter/http/httpUtils.dart';
+import 'package:ys_tiktok_flutter/persistence/userStorage.dart';
 import '../const.dart';
+import '../http/baseRes.dart';
 import '../router/Router.dart';
 import '../utils/phone.dart';
 import '../widget/Bottons.dart';
@@ -47,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
       _phoneText = text;
     });
   }
-  _getCode(){
+  _getCode() async {
     if(_phoneText.isEmpty){
       setState(() {
         showToast("手机号不能为空！", 16.0.sp);
@@ -63,33 +72,43 @@ class _LoginPageState extends State<LoginPage> {
     //验证手机号
     bool isValid = validateChinesePhoneNumber(_phoneText);
     if(isValid){
-      //验证通过
-      //开线程
-      _countdownTimer = CountdownTimer(
-        Duration(seconds: _remainingSeconds),
-        const Duration(seconds: seconds),
-      );
-      setState(() {
-        //修改文字 60s
-        _myButton.myButtonState.setText("${_remainingSeconds}S");
-      });
-      _countdownTimer?.listen((count) {
+      BaseRes res = await HttpUtils.get(HttpUtils.getCode, {"phone":_phoneText,"code_type":0});
+      if(res.code == 200){
+        int code = res.data;
         setState(() {
-          _remainingSeconds = count.remaining.inSeconds;
-          //修改文字  <60S
+          showToast("$code", 16.0.sp);
+        });
+        //开线程
+        _countdownTimer = CountdownTimer(
+          Duration(seconds: _remainingSeconds),
+          const Duration(seconds: seconds),
+        );
+        setState(() {
+          //修改文字 60s
           _myButton.myButtonState.setText("${_remainingSeconds}S");
         });
-
-        if (_remainingSeconds <= 0) {
+        _countdownTimer?.listen((count) {
           setState(() {
-            //修改文字  0
-            _myButton.myButtonState.setText("重新获取");
-            _myButton.myButtonState.setTextCanClick();
-            _remainingSeconds = countdown;
+            _remainingSeconds = count.remaining.inSeconds;
+            //修改文字  <60S
+            _myButton.myButtonState.setText("${_remainingSeconds}S");
           });
-        }
-      });
-      _countdownTimer?.start();
+
+          if (_remainingSeconds <= 0) {
+            setState(() {
+              //修改文字  0
+              _myButton.myButtonState.setText("重新获取");
+              _myButton.myButtonState.setTextCanClick();
+              _remainingSeconds = countdown;
+            });
+          }
+        });
+        _countdownTimer?.start();
+      }else{
+        setState(() {
+          showToast(res.message, 16.0.sp);
+        });
+      }
     }else{
       setState(() {
         showToast("请输入正确手机号！", 16.0.sp);
@@ -102,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
       _codeText = text;
     });
   }
-  _login(){
+  _login() async {
     _myButton.myButtonState.setText("登录");
     if(_phoneText.isEmpty){
       setState(() {
@@ -125,8 +144,19 @@ class _LoginPageState extends State<LoginPage> {
       });
       return;
     }
-    //登录成功，关闭当前页面
-    Navigator.of(context).pop();
+    BaseRes res = await HttpUtils.get(HttpUtils.setLogin, {"phone":_phoneText,"code":_codeText,"login_type":0});
+    if(res.code == 200){
+      LoginBean bean = LoginBean.fromMap(res.data);
+      UserStorage.set(res.data);
+      UserStorage.getToken().then((value) => Logger().i("token======>$value"));
+      //登录成功，关闭当前页面
+      Navigator.of(context).pop();
+    }else{
+      setState(() {
+        showToast(res.message, 16.0.sp);
+      });
+    }
+
   }
   @override
   void dispose() {
@@ -136,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pinkAccent,
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView   (
         physics:const BouncingScrollPhysics(),
@@ -188,7 +218,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Expanded(
                     flex: 1,
-                    child: Container(
+                    child: SizedBox(
                       height: 30.w,
                       child: TextField(
                         keyboardType: TextInputType.number,
@@ -208,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: "请输入您的手机号",
                           hintStyle: TextStyle(color: Colors.grey,fontSize: 15.sp),
                           // labelText: _phoneText,
-                          labelStyle: TextStyle(color: Colors.black,fontSize: 15.sp),
+                          labelStyle: TextStyle(color: Colors.blue,fontSize: 15.sp),
                           //hintText: "请输入信息",
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent, width: 0.w,),

@@ -21,9 +21,11 @@ class CountdownTimer {
     while (duration.inSeconds > 0) {
       await Future.delayed(tick);
       duration -= tick;
-      controller.add(this);
-      if (duration.inSeconds == 0) {
-        controller.close();
+      if(!controller.isClosed){
+        controller.add(this);
+        if (duration.inSeconds == 0) {
+          controller.close();
+        }
       }
     }
   }
