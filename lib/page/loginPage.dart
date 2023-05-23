@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:clipboard/clipboard.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -50,7 +51,7 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
   double _keyboardHeight = 0;
   // 可控制ListView滑动
   final _scrollController = ScrollController();
-
+  final TextEditingController _controller = TextEditingController();
   // 用于获取目标Widget的位置坐标
   final _targetWidgetKey = GlobalKey();
   @override
@@ -87,6 +88,8 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
         setState(() {
           showToast("$code", 16.0.sp);
         });
+        //复制验证码到剪切板
+        FlutterClipboard.copy("$code").then(( value ) => Logger().i('copied'));
         //开线程
         _countdownTimer = CountdownTimer(
           Duration(seconds: _remainingSeconds),
@@ -195,6 +198,14 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
           _keyboardHeight = 0;
         }else {
           _keyboardHeight = keyboardHeight;
+          //弹起软键盘  从剪切板种获取数据
+          FlutterClipboard.paste().then((value) {
+            // Do what ever you want with the value.
+            setState(() {
+              String code = value;
+              _controller.text = code;
+            });
+          });
         }
         Logger().i("$_keyboardHeight");
       });
@@ -295,6 +306,7 @@ class _LoginPageState extends State<LoginPage> with WidgetsBindingObserver {
                       child: SizedBox(
                         height: 30.w,
                         child: TextField(
+                          controller: _controller,
                           keyboardType: TextInputType.number,
                           onChanged: _textChangedPhone,
                           // textAlign: TextAlign.left,
