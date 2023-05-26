@@ -81,7 +81,7 @@ Widget setRouter(Widget widget){
       scaffoldBackgroundColor: ColorPlate.back1,
       dialogBackgroundColor: ColorPlate.back2,
       // accentColorBrightness: Brightness.light,
-      textTheme: const TextTheme(bodyText1: StandardTextStyle.normal,),
+      textTheme: TextTheme(bodyText1: StandardTextStyle.normal,),
       // inputDecorationTheme: const InputDecorationTheme(
       //   labelStyle: TextStyle(color: Colors.grey)
       // ),

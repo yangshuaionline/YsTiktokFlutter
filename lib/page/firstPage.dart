@@ -5,8 +5,6 @@ import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-
-import '../Const.dart';
 import '../utils/refresher.dart';
 import '../widget/Toasts.dart';
 import '../widget/firstHeader.dart';

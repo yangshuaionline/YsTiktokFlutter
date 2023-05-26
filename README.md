@@ -22,3 +22,11 @@ samples, guidance on mobile development, and a full API reference.
 1. 文件名：模块+功能（tikTokHeader）
 2. 页面命名：模块+功能+Page（登录页tikTokPage）
 
+
+
+### 版本：
+
+Android
+> 1. minSdkVersion 21
+> 2. targetSdkVersion 33
+

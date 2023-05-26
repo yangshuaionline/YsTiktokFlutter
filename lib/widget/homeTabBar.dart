@@ -1,15 +1,17 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../style/style.dart';
 import 'SelectText.dart';
 
 enum HomePageTag {
   home,
-  find,
-  goods,
-  mine,
+  friend,
+  push,
+  message,
+  mine
 }
 /// 首页tab标签
 class HomeTabBar extends StatelessWidget {
@@ -44,17 +46,18 @@ class HomeTabBar extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             child: SelectText(
-              isSelect: current == HomePageTag.find,
-              title: '发现',
+              isSelect: current == HomePageTag.friend,
+              title: '朋友',
             ),
-            onTap: () => onTabSwitch?.call(HomePageTag.find),
+            onTap: () => onTabSwitch?.call(HomePageTag.friend),
           ),
         ),
         Expanded(
           child: GestureDetector(
             child: Icon(
-              Icons.add_circle_outline,
-              size: 32,
+              Icons.add_circle,
+              size: 32.w,
+              color: Colors.white,
             ),
             onTap: () => onAddButton?.call(),
           ),
@@ -62,17 +65,17 @@ class HomeTabBar extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             child: SelectText(
-              isSelect: current == HomePageTag.goods,
-              title: '好物',
+              isSelect: current == HomePageTag.message,
+              title: '消息',
             ),
-            onTap: () => onTabSwitch?.call(HomePageTag.goods),
+            onTap: () => onTabSwitch?.call(HomePageTag.message),
           ),
         ),
         Expanded(
           child: GestureDetector(
             child: SelectText(
               isSelect: current == HomePageTag.mine,
-              title: '我的',
+              title: '我',
             ),
             onTap: () => onTabSwitch?.call(HomePageTag.mine),
           ),

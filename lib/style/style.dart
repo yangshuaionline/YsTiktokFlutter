@@ -1,58 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class SysSize {
-  static const double avatar = 56;
-  // static const double iconBig = 40;
-  static const double iconNormal = 24;
-  // static const double big = 18;
-  // static const double normal = 16;
-  // static const double small = 12;
-  static const double iconBig = 40;
-  static const double big = 16;
-  static const double normal = 14;
-  static const double small = 12;
+  static double selected = 15.w;
+  static double normal = 15.w;
 }
 
 class StandardTextStyle {
-  static const TextStyle big = const TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: SysSize.big,
+  ///选中文字 白色
+  static TextStyle selected = TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: SysSize.selected,
     inherit: true,
+    color: Colors.white
   );
-  static const TextStyle bigWithOpacity = const TextStyle(
-    color: const Color.fromRGBO(0xff, 0xff, 0xff, .66),
-    fontWeight: FontWeight.w600,
-    fontSize: SysSize.big,
-    inherit: true,
-  );
-  static const TextStyle normalW = const TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: SysSize.normal,
-    inherit: true,
-  );
-  static const TextStyle normal = const TextStyle(
+  ///普通文字  灰色
+  static TextStyle normal = TextStyle(
     fontWeight: FontWeight.normal,
     fontSize: SysSize.normal,
     inherit: true,
-  );
-  static const TextStyle normalWithOpacity = const TextStyle(
-    color: const Color.fromRGBO(0xff, 0xff, 0xff, .66),
-    fontWeight: FontWeight.normal,
-    fontSize: SysSize.normal,
-    inherit: true,
-  );
-  static const TextStyle small = const TextStyle(
-    fontWeight: FontWeight.normal,
-    fontSize: SysSize.small,
-    inherit: true,
-  );
-  static const TextStyle smallWithOpacity = const TextStyle(
-    color: const Color.fromRGBO(0xff, 0xff, 0xff, .66),
-    fontWeight: FontWeight.normal,
-    fontSize: SysSize.small,
-    inherit: true,
+    color: Colors.grey
   );
 }
 

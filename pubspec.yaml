@@ -61,6 +61,10 @@ dependencies:
   logger: ^1.3.0
   # 粘贴板
   clipboard: ^0.1.3
+  # 相机
+  camera: ^0.10.5
+  # 录像
+  path_provider: ^2.0.15
 dev_dependencies:
   flutter_test:
     sdk: flutter

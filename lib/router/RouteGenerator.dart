@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ys_tiktok_flutter/page/cameraPage.dart';
 
 import '../main.dart';
 import '../page/ErrorPage.dart';
@@ -25,6 +26,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => PageAgreement(title: title, content1: content1,content2: content2));
       case routerTiktok:
         return MaterialPageRoute(builder: (_) => const PageTiktok());
+      case routerPush:
+        return MaterialPageRoute(builder: (_) => const CameraPage());
       default:
         return MaterialPageRoute(builder: (_) => const ErrorPage(error:"路由配置错误"));
     }

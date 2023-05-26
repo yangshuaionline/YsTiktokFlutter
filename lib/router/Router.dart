@@ -10,3 +10,5 @@ const routerWelcome = "/welcome";
 const routerAgreement = "/agreement";
 //刷视频页面 tiktok
 const routerTiktok = "/tiktok";
+//发布页
+const routerPush = "/push";
